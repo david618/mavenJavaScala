@@ -76,15 +76,18 @@ Some Tweaks
 - Replace mainClass with the name of your Main Class.
 - Replace projectname with the name you want for your jar file
 
+
 <pre>
 
     &lt;properties&gt;
         &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
         &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
         &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
-        &lt;mainClass&gt;org.jennings.learning.java.Main&lt;/mainClass&gt;
-    &lt;/properties&gt;  
-    
+        &lt;mainClass&gt;org.jennings.java.learning.Main&lt;/mainClass&gt;
+        &lt;projectname&gt;mavenJavaScalalearning&lt;/projectname&gt;
+    &lt;/properties&gt;
+
+
     &lt;dependencies&gt;
         &lt;dependency&gt;
             &lt;groupId&gt;org.scala-lang&lt;/groupId&gt;
@@ -99,9 +102,9 @@ Some Tweaks
             &lt;scope&gt;test&lt;/scope&gt;
         &lt;/dependency&gt;
     &lt;/dependencies&gt;
-    
+
     &lt;build&gt;
-        &lt;finalName&gt;learningScala&lt;/finalName&gt;
+        &lt;finalName&gt;${projectname}&lt;/finalName&gt;
 
         &lt;plugins&gt;
 
@@ -189,6 +192,7 @@ Some Tweaks
             &lt;plugin&gt;
                 &lt;groupId&gt;net.alchim31.maven&lt;/groupId&gt;
                 &lt;artifactId&gt;scala-maven-plugin&lt;/artifactId&gt;
+                &lt;version&gt;3.2.2&lt;/version&gt;
                 &lt;executions&gt;
                     &lt;execution&gt;
                         &lt;id&gt;scala-compile-first&lt;/id&gt;
@@ -221,9 +225,7 @@ Some Tweaks
 
 
         &lt;/plugins&gt;
-    &lt;/build&gt;    
-    
-    
+    &lt;/build&gt;
 </pre>
 
 
