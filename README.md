@@ -28,7 +28,7 @@ Create a package (e.g. org.jennings.java.learning)
 
 In the package create a Java class.
 
-<pre>
+```
 package org.jennings.java.learning;
 
 /**
@@ -40,7 +40,8 @@ public class Main {
         System.out.println("Hello Java");
     }
 }
-</pre>
+```
+
 
 ## Create Scala Object
 
@@ -52,7 +53,7 @@ Right click on src/main/scala and create new Package (e.g. org.jennings.scala.le
 
 In the package create new Scala Class (Change Kind to Object)
 
-<pre>
+```
 package org.jennings.scala.learning
 
 /**
@@ -61,13 +62,7 @@ package org.jennings.scala.learning
 object Main extends App {
   println("Hello Scala")
 }
-</pre>
-
-
-
-
-
-
+```
 ## Configure for Scala and Java
 
 Modified the pom.xml file.  Add the following xml.  
