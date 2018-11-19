@@ -239,7 +239,7 @@ mvn install
 
 You should see output like this.
 
-<pre>
+```
 [INFO] Scanning for projects...
 [INFO]                                                                         
 [INFO] ------------------------------------------------------------------------
@@ -296,23 +296,21 @@ You should see output like this.
 [INFO] Final Memory: 24M/578M
 [INFO] ------------------------------------------------------------------------
 
-</pre>
+```
 
 Notice the message that 1 Java and 1 Scala project were compiled.
 
 ## Run 
 
 Run the Main Class specified in pom.xml
-<pre>
+```
 java -jar target/mavenJavaScalalearning.jar
 Hello Java
-</pre>
-
+```
 Run a specific class.
 
-<pre>
+```
 java -cp target/mavenJavaScalalearning.jar org.jennings.scala.learning.Main
 Hello Scala
-</pre>
-
+```
 
