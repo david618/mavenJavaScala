@@ -77,156 +77,155 @@ Some Tweaks
 - Replace projectname with the name you want for your jar file
 
 
-<pre>
+```
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <mainClass>org.jennings.java.learning.Main</mainClass>
+        <projectname>mavenJavaScalalearning</projectname>
+    </properties>
 
-    &lt;properties&gt;
-        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
-        &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
-        &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
-        &lt;mainClass&gt;org.jennings.java.learning.Main&lt;/mainClass&gt;
-        &lt;projectname&gt;mavenJavaScalalearning&lt;/projectname&gt;
-    &lt;/properties&gt;
 
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.11.8</version>
+        </dependency>
 
-    &lt;dependencies&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.scala-lang&lt;/groupId&gt;
-            &lt;artifactId&gt;scala-library&lt;/artifactId&gt;
-            &lt;version&gt;2.11.8&lt;/version&gt;
-        &lt;/dependency&gt;
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_2.11</artifactId>
+            <version>2.2.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.scalatest&lt;/groupId&gt;
-            &lt;artifactId&gt;scalatest_2.11&lt;/artifactId&gt;
-            &lt;version&gt;2.2.1&lt;/version&gt;
-            &lt;scope&gt;test&lt;/scope&gt;
-        &lt;/dependency&gt;
-    &lt;/dependencies&gt;
+    <build>
+        <finalName>${projectname}</finalName>
 
-    &lt;build&gt;
-        &lt;finalName&gt;${projectname}&lt;/finalName&gt;
+        <plugins>
 
-        &lt;plugins&gt;
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
 
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
-                &lt;version&gt;2.3.2&lt;/version&gt;
-                &lt;configuration&gt;
-                    &lt;source&gt;1.8&lt;/source&gt;
-                    &lt;target&gt;1.8&lt;/target&gt;
-                &lt;/configuration&gt;
-            &lt;/plugin&gt;
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>${mainClass}</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-            &lt;plugin&gt;
-                &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
-                &lt;configuration&gt;
-                    &lt;archive&gt;
-                        &lt;manifest&gt;
-                            &lt;mainClass&gt;${mainClass}&lt;/mainClass&gt;
-                        &lt;/manifest&gt;
-                    &lt;/archive&gt;
-                    &lt;descriptorRefs&gt;
-                        &lt;descriptorRef&gt;jar-with-dependencies&lt;/descriptorRef&gt;
-                    &lt;/descriptorRefs&gt;
-                &lt;/configuration&gt;
-                &lt;executions&gt;
-                    &lt;execution&gt;
-                        &lt;id&gt;make-assembly&lt;/id&gt;
-                        &lt;phase&gt;package&lt;/phase&gt;
-                        &lt;goals&gt;
-                            &lt;goal&gt;single&lt;/goal&gt;
-                        &lt;/goals&gt;
-                    &lt;/execution&gt;
-                &lt;/executions&gt;
-            &lt;/plugin&gt;
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/lib</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
-                &lt;executions&gt;
-                    &lt;execution&gt;
-                        &lt;id&gt;copy-dependencies&lt;/id&gt;
-                        &lt;phase&gt;prepare-package&lt;/phase&gt;
-                        &lt;goals&gt;
-                            &lt;goal&gt;copy-dependencies&lt;/goal&gt;
-                        &lt;/goals&gt;
-                        &lt;configuration&gt;
-                            &lt;outputDirectory&gt;target/lib&lt;/outputDirectory&gt;
-                            &lt;overWriteReleases&gt;false&lt;/overWriteReleases&gt;
-                            &lt;overWriteSnapshots&gt;false&lt;/overWriteSnapshots&gt;
-                            &lt;overWriteIfNewer&gt;true&lt;/overWriteIfNewer&gt;
-                        &lt;/configuration&gt;
-                    &lt;/execution&gt;
-                &lt;/executions&gt;
-            &lt;/plugin&gt;
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <outputDirectory>target</outputDirectory>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>${mainClass}</mainClass>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>lib/</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
 
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt;
-                &lt;version&gt;2.5&lt;/version&gt;
-                &lt;configuration&gt;
-                    &lt;outputDirectory&gt;target&lt;/outputDirectory&gt;
-                    &lt;archive&gt;
-                        &lt;manifest&gt;
-                            &lt;addClasspath&gt;true&lt;/addClasspath&gt;
-                            &lt;classpathPrefix&gt;lib/&lt;/classpathPrefix&gt;
-                            &lt;mainClass&gt;${mainClass}&lt;/mainClass&gt;
-                        &lt;/manifest&gt;
-                        &lt;manifestEntries&gt;
-                            &lt;Class-Path&gt;lib/&lt;/Class-Path&gt;
-                        &lt;/manifestEntries&gt;
-                    &lt;/archive&gt;
-                &lt;/configuration&gt;
-            &lt;/plugin&gt;
-
-            &lt;!--
-            https://mvnrepository.com/artifact/net.alchim31.maven/scala-maven-plugin  &lt;&lt; Last update Jun 2015
+            <!--
+            https://mvnrepository.com/artifact/net.alchim31.maven/scala-maven-plugin  << Last update Jun 2015
 
                                  Documentation: https://github.com/davidB/scala-maven-plugin
                                  David Bernard
                                  Previously Known as maven-scala-plugin
                                  Docs: http://davidb.github.io/scala-maven-plugin/
 
-            --&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;net.alchim31.maven&lt;/groupId&gt;
-                &lt;artifactId&gt;scala-maven-plugin&lt;/artifactId&gt;
-                &lt;version&gt;3.2.2&lt;/version&gt;
-                &lt;executions&gt;
-                    &lt;execution&gt;
-                        &lt;id&gt;scala-compile-first&lt;/id&gt;
-                        &lt;phase&gt;process-resources&lt;/phase&gt;
-                        &lt;goals&gt;
-                            &lt;goal&gt;add-source&lt;/goal&gt;
-                            &lt;goal&gt;compile&lt;/goal&gt;
-                        &lt;/goals&gt;
-                    &lt;/execution&gt;
-                    &lt;execution&gt;
-                        &lt;id&gt;scala-test-compile&lt;/id&gt;
-                        &lt;phase&gt;process-test-resources&lt;/phase&gt;
-                        &lt;goals&gt;
-                            &lt;goal&gt;testCompile&lt;/goal&gt;
-                        &lt;/goals&gt;
-                    &lt;/execution&gt;
-                &lt;/executions&gt;
-                &lt;configuration&gt;
-                    &lt;checkMultipleScalaVersions&gt;false&lt;/checkMultipleScalaVersions&gt;
-                    &lt;recompileMode&gt;incremental&lt;/recompileMode&gt;
-                    &lt;jvmArgs&gt;
-                        &lt;jvmArg&gt;-Xss1024k&lt;/jvmArg&gt;
-                        &lt;jvmArg&gt;-Xms64m&lt;/jvmArg&gt;
-                        &lt;jvmArg&gt;-Xmx2048m&lt;/jvmArg&gt;
-                    &lt;/jvmArgs&gt;
-                &lt;/configuration&gt;
-            &lt;/plugin&gt;
+            -->
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.2.2</version>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <checkMultipleScalaVersions>false</checkMultipleScalaVersions>
+                    <recompileMode>incremental</recompileMode>
+                    <jvmArgs>
+                        <jvmArg>-Xss1024k</jvmArg>
+                        <jvmArg>-Xms64m</jvmArg>
+                        <jvmArg>-Xmx2048m</jvmArg>
+                    </jvmArgs>
+                </configuration>
+            </plugin>
 
 
 
 
-        &lt;/plugins&gt;
-    &lt;/build&gt;
-</pre>
+        </plugins>
+    </build>
+    ```
 
 
 Some Notes about pom.xml entries
