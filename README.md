@@ -44,9 +44,9 @@ public class Main {
 
 ## Create Scala Object
 
-Under src/main create a new directory name scala; then right click scala directory and Sources Root.
+Right click on Project root folder and select "Add Framework Support"; select Scala
 
-Under src/test create a new directory name scala; then right click scala directory and Test Sources Root.
+Under src/main create a new directory name scala; then right click scala directory select "Mark Directory As" Sources Root.
 
 Right click on src/main/scala and create new Package (e.g. org.jennings.scala.learning)
 
