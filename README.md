@@ -1,5 +1,5 @@
 # Overview
-Create a Maven Project that includes both Java and Scala Code using (intellij)[https://www.jetbrains.com/idea/]
+Create a Maven Project that includes both Java and Scala Code using [intellij](https://www.jetbrains.com/idea/)
 
 
 ## Assumptions
@@ -220,7 +220,7 @@ Some Tweaks
 
         </plugins>
     </build>
-    ```
+```
 
 
 Some Notes about pom.xml entries
@@ -233,9 +233,9 @@ Some Notes about pom.xml entries
 ## Compile 
 From command line enter the project folder.
 
-<pre>
+```
 mvn install
-</pre>
+```
 
 You should see output like this.
 
