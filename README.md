@@ -24,6 +24,8 @@ You can import changes for the Maven projects or Enable Auto-Import.
 
 ## Create a Java Class
 
+Expand out src -> main -> java.  Right click on java. 
+
 Create a package (e.g. org.jennings.java.learning)
 
 In the package create a Java class.
