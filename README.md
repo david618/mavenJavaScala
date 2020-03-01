@@ -75,26 +75,18 @@ Some Tweaks
 
 
 ```
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <mainClass>org.jennings.java.learning.Main</mainClass>
-        <projectname>mavenJavaScalalearning</projectname>
-    </properties>
-
 
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.11.8</version>
+            <version>2.11.12</version>
         </dependency>
 
         <dependency>
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.11</artifactId>
-            <version>2.2.1</version>
+            <version>3.1.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -107,7 +99,7 @@ Some Tweaks
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -160,7 +152,7 @@ Some Tweaks
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.5</version>
+                <version>3.2.0</version>
                 <configuration>
                     <outputDirectory>target</outputDirectory>
                     <archive>
@@ -176,19 +168,10 @@ Some Tweaks
                 </configuration>
             </plugin>
 
-            <!--
-            https://mvnrepository.com/artifact/net.alchim31.maven/scala-maven-plugin  << Last update Jun 2015
-
-                                 Documentation: https://github.com/davidB/scala-maven-plugin
-                                 David Bernard
-                                 Previously Known as maven-scala-plugin
-                                 Docs: http://davidb.github.io/scala-maven-plugin/
-
-            -->
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
-                <version>3.2.2</version>
+                <version>4.3.1</version>
                 <executions>
                     <execution>
                         <id>scala-compile-first</id>
@@ -216,9 +199,6 @@ Some Tweaks
                     </jvmArgs>
                 </configuration>
             </plugin>
-
-
-
 
         </plugins>
     </build>
